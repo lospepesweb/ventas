@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-08-2017 a las 01:00:12
+-- Tiempo de generación: 13-08-2017 a las 00:39:31
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -39,6 +39,14 @@ CREATE TABLE `articulo` (
   `condicion` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `articulo`
+--
+
+INSERT INTO `articulo` (`idarticulo`, `idcategoria`, `codigo`, `nombre`, `stock`, `descripcion`, `imagen`, `condicion`) VALUES
+(1, 15, '123', 'Licencia Windows 10', 0, '', '1502067035.jpg', 1),
+(2, 14, '1546', 'Monitor', 1, 'asd', '1502063319.png', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +59,15 @@ CREATE TABLE `categoria` (
   `descripcion` varchar(256) DEFAULT NULL,
   `condicion` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`idcategoria`, `nombre`, `descripcion`, `condicion`) VALUES
+(14, 'Hardware', 'Hardware descp.', 1),
+(15, 'Software', 'Software descrp.', 1),
+(16, 'Catagoría 1', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -112,6 +129,19 @@ CREATE TABLE `permiso` (
   `nombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `permiso`
+--
+
+INSERT INTO `permiso` (`idpermiso`, `nombre`) VALUES
+(1, 'Escritorio'),
+(2, 'Almacen'),
+(3, 'Compras'),
+(4, 'Ventas'),
+(5, 'Acceso'),
+(6, 'Consulta Compras'),
+(7, 'Consulta Ventas');
+
 -- --------------------------------------------------------
 
 --
@@ -146,8 +176,17 @@ CREATE TABLE `usuario` (
   `cargo` varchar(20) DEFAULT NULL,
   `login` varchar(20) NOT NULL,
   `clave` varchar(64) NOT NULL,
+  `imagen` varchar(50) NOT NULL,
   `condicion` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idusuario`, `nombre`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`, `cargo`, `login`, `clave`, `imagen`, `condicion`) VALUES
+(2, 'Andrés Petronio', 'DNI', '32033266', 'Peru 765', '121654654', 'andpetroniofb@gmail.comas', 'Capo', 'petro', 'fb0965ba73af5de1b72e631602d18940d120935065eadbea6f3dbbfe7225d3c9', '1502556817.png', 1),
+(3, 'nombre', 'DNI', '20321321321', '', '', '', '', 'nombre1', 'b9393af804c94b3eb9a66a5f4a1cec3c6e20d53e7d27060d05c8126e75344319', '', 1);
 
 -- --------------------------------------------------------
 
@@ -160,6 +199,15 @@ CREATE TABLE `usuario_permiso` (
   `idusuario` int(11) NOT NULL,
   `idpermiso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario_permiso`
+--
+
+INSERT INTO `usuario_permiso` (`idusuario_permiso`, `idusuario`, `idpermiso`) VALUES
+(40, 2, 1),
+(41, 2, 2),
+(42, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -266,12 +314,12 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `detalle_ingreso`
 --
@@ -291,7 +339,7 @@ ALTER TABLE `ingreso`
 -- AUTO_INCREMENT de la tabla `permiso`
 --
 ALTER TABLE `permiso`
-  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
@@ -301,12 +349,12 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
 --
 ALTER TABLE `usuario_permiso`
-  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idusuario_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
