@@ -6,8 +6,8 @@ session_start();
 if(!isset($_SESSION['nombre'])){
   header('Location: login.html');
 } else {
-
-require 'header.php'; ?>
+  if($_SESSION['acceso'] == 1){
+    require 'header.php'; ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -45,7 +45,11 @@ require 'header.php'; ?>
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
-<?php require 'footer.php'; ?>
+<?php 
+  } else {
+    require 'noacceso.php';
+  }
+require 'footer.php'; ?>
 <script src="scripts/permiso.js"></script>
 <?php 
 } 

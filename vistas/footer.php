@@ -1,12 +1,12 @@
 <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <strong>Version</strong> En desarrollo
+          <strong>Version en desarrollo</strong>
         </div>
         <span class="fa-stack fa-md">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-code fa-stack-1x fa-inverse"></i>
         </span>
-        <strong>by: <a href="http://www.lospepesweb.com" target="_blank">Los Pepes | WEB DEVELOPMENT</a>.</strong> All rights reserved.
+        <strong>by: <a href="http://www.lospepesweb.com" target="_blank">Los Pepes | WEB DEVELOPMENT</a>.</strong>
     </footer>    
     <!-- jQuery 2.1.4 -->
     <script src="../public/js/jquery-3.2.1.min.js"></script>

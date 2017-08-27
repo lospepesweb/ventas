@@ -5,7 +5,8 @@ session_start();
 if(!isset($_SESSION['nombre'])){
   header('Location: login.html');
 } else {
-  require 'header.php';
+  if($_SESSION['acceso'] == 1){
+    require 'header.php';
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -71,7 +72,7 @@ if(!isset($_SESSION['nombre'])){
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="direccion">Dirección:</label>
-                            <input type="text" name="direccion" id="direccion" maxlength="70" class="form-control">
+                            <input type="text" class="form-control" name="direccion" id="direccion" maxlength="70" >
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="telefono">Teléfono:</label>
@@ -92,7 +93,7 @@ if(!isset($_SESSION['nombre'])){
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="clave">Clave (*):</label>
                             <input type="password" name="clave" id="clave" maxlength="64" class="form-control" required>
-                            <input type="text" id="claveActual" name="claveActual">
+                            <input type="hidden" id="claveActual" name="claveActual">
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="permisos">Permisos:</label>
@@ -120,7 +121,11 @@ if(!isset($_SESSION['nombre'])){
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
-<?php require 'footer.php'; ?>
+<?php 
+  } else {
+    require 'noacceso.php';
+  }
+require 'footer.php'; ?>
 <script src="scripts/usuario.js"></script>
 <?php 
 } 

@@ -154,7 +154,7 @@ function mostrar(idusuario){
 		$('#cargo').val(data.cargo);
 		$('#login').val(data.login);
 		$('#clave').val('');
-		$('#claveActual').val(data.clave);
+		$('#claveActual').val('Puedo usar este input para desencriptar la clave actual, copiarla y pegarla en campo "clave"');
 		$('#imagen').val('');
 		$('#imagenMuestra').show();
 		$('#imagenMuestra').attr("src","../files/usuarios/" + data.imagen);

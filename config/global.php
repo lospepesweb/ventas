@@ -16,3 +16,4 @@ define("DB_ENCODE", "utf8");
 
 //constante con el nombre del proyecto para titular paginas
 define("PRO_NOMBRE", "Icaro");
+?>

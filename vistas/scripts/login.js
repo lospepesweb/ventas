@@ -6,7 +6,7 @@ $('#frmAcceso').on('submit',function(e){
 
 	$.post('../ajax/usuario.php?op=verificar',{'logina':logina,'clavea':clavea}, function(data){
 		if(data != 'null'){
-			$(location).attr('href','categoria.php');
+			$(location).attr('href','escritorio.php');
 		} else {
 			swal(
 				'Ups...',

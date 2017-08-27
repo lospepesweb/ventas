@@ -40,7 +40,7 @@ switch ($_GET['op']) {
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
 				"0"=>'<center><button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')" title="Editar"><i class="fa fa-pencil"></i></button>'.
-					' <button class="btn btn-danger" onclick="eliminar('.$reg->idpersona.')" title="Desactivar"><i class="fa fa-trash"></i></button></center>',
+					' <button class="btn btn-danger" onclick="eliminar('.$reg->idpersona.')" title="Eliminar"><i class="fa fa-trash"></i></button></center>',
 				"1"=>'<center>'.$reg->nombre.'</center>',
 				"2"=>'<center>'.$reg->tipo_documento.'</center>',
 				"3"=>'<center>'.$reg->num_documento.'</center>',
@@ -56,6 +56,7 @@ switch ($_GET['op']) {
 		);
 		echo json_encode($results);
 		break;
+		
 	case 'listarc':
 		$rspta = $persona->listarc();
 		//declaramos array donde se van a mostrar todos los registros de la tabla
@@ -63,10 +64,10 @@ switch ($_GET['op']) {
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
 				"0"=>'<center><button class="btn btn-warning" onclick="mostrar('.$reg->idpersona.')" title="Editar"><i class="fa fa-pencil"></i></button>'.
-					' <button class="btn btn-danger" onclick="eliminar('.$reg->idpersona.')" title="Desactivar"><i class="fa fa-trash"></i></button></center>',
+					' <button class="btn btn-danger" onclick="eliminar('.$reg->idpersona.')" title="Eliminar"><i class="fa fa-trash"></i></button></center>',
 				"1"=>'<center>'.$reg->nombre.'</center>',
 				"2"=>'<center>'.$reg->tipo_documento.'</center>',
-				"3"=>'<center>'.$reg->num_cocumento.'</center>',
+				"3"=>'<center>'.$reg->num_documento.'</center>',
 				"4"=>'<center>'.$reg->telefono.'</center>',
 				"5"=>'<center>'.$reg->email.'</center>'
 			);

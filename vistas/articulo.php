@@ -6,7 +6,8 @@ session_start();
 if(!isset($_SESSION['nombre'])){
   header('Location: login.html');
 } else {
-  require 'header.php'; 
+  require 'header.php';
+  if($_SESSION['almacen'] == 1){ 
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -18,7 +19,7 @@ if(!isset($_SESSION['nombre'])){
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Artículos <button class="btn btn-success" id="btnAgregar" onclick="mostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Artículos <button class="btn btn-success" id="btnAgregar" onclick="mostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button> <a href="../reportes/rptarticulos.php" target="_blank"><button class="btn btn-info">Reporte</button></a></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -96,7 +97,11 @@ if(!isset($_SESSION['nombre'])){
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
-<?php require 'footer.php'; ?>
+<?php  
+  } else {
+    require 'noacceso.php';
+  }
+    require 'footer.php'; ?>
 <script src="../public/js/JsBarcode.all.min.js"></script>
 <script src="../public/js/jquery.PrintArea.js"></script>
 <script src="scripts/articulo.js"></script>

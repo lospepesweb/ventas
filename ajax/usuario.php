@@ -14,6 +14,7 @@ $email=isset($_POST["email"])? limpiarCadena($_POST["email"]):"";
 $cargo=isset($_POST["cargo"])? limpiarCadena($_POST["cargo"]):"";
 $login=isset($_POST["login"])? limpiarCadena($_POST["login"]):"";
 $clave=isset($_POST["clave"])? limpiarCadena($_POST["clave"]):"";
+$claveActual=isset($_POST["claveActual"])? limpiarCadena($_POST["clave"]):"";
 $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
 
 switch ($_GET['op']) {
@@ -90,23 +91,25 @@ switch ($_GET['op']) {
         require_once "../modelos/Permiso.php";
         $permiso = new Permiso();
         $rspta = $permiso->listar();
- 
+
         //Obtener los permisos asignados al usuario
-        $id = $_GET['id'];
-        $marcados = $usuario->listarMarcados($id);
+        $id=$_GET['id'];
+        $marcados = $usuario->listarmarcados($id);
         //Declaramos el array para almacenar todos los permisos marcados
-        $valores = array();
- 
+        $valores=array();
+
         //Almacenar los permisos asignados al usuario en el array
-        while ($per = $marcados->fetch_object()) {
-            array_push($valores, $per->idpermiso);
-        }
- 
+        while ($per = $marcados->fetch_object())
+            {
+                array_push($valores, $per->idpermiso);
+            }
+
         //Mostramos la lista de permisos en la vista y si están o no marcados
-        while ($reg = $rspta->fetch_object()) {
-            $sw = in_array($reg->idpermiso,$valores)?'checked':'';
-            echo '<li> <input type="checkbox" '.$sw.'  name="permiso[]" value="'.$reg->idpermiso.'">'.$reg->nombre.'</li>';
-        }
+        while ($reg = $rspta->fetch_object())
+                {
+                    $sw=in_array($reg->idpermiso,$valores)?'checked':'';
+                    echo '<li> <input type="checkbox" '.$sw.'  name="permiso[]" value="'.$reg->idpermiso.'">'.$reg->nombre.'</li>';
+                }
     break;
    
     case 'verificar':
@@ -147,5 +150,14 @@ switch ($_GET['op']) {
         }
         echo json_encode($fetch);
 
+    break;
+
+    case 'salir':
+        //limpiamos las variables de sesión
+        session_unset();
+        //destruimos la sesison
+        session_destroy();
+        //redireccionamos al login
+        header('Location: ../index.php');
     break;
 }

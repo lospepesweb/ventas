@@ -6,6 +6,7 @@ if(!isset($_SESSION['nombre'])){
   header('Location: login.html');
 } else {
   require 'header.php';
+  if($_SESSION['ventas'] == 1) {
 ?>
 <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
@@ -17,7 +18,7 @@ if(!isset($_SESSION['nombre'])){
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Clientes <button class="btn btn-success" id="btnAgregar" onclick="mostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Cliente <button class="btn btn-success" id="btnAgregar" onclick="mostrarForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -56,8 +57,8 @@ if(!isset($_SESSION['nombre'])){
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="tipo_documento">Tipo documento:</label>
                             <select class="form-control select-picker" name="tipo_documento" id="tipo_documento" required>
-                              <option value="dni">DNI</option>
-                              <option value="cuit">CUIT</option>
+                              <option value="DNI">DNI</option>
+                              <option value="CUIT">CUIT</option>
                             </select>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -90,8 +91,15 @@ if(!isset($_SESSION['nombre'])){
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
-<?php require 'footer.php'; ?>
-<script src="scripts/proveedor.js"></script>
+<?php 
+} else {
+  require 'noacceso.php';
+}
+require 'footer.php'; 
+?>
+
+<script src="scripts/cliente.js"></script>
+
 <?php 
 } 
 
